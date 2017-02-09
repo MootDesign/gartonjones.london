@@ -1,0 +1,49 @@
+@import "strips";
+@import "colors";
+@import "grid-view";
+
+body, html {
+  overflow: auto !important;
+}
+.search {
+  .page-title {
+    background: rgba(0,0,0,0.6);
+    padding-top: 25px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+    font-size: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .content .the-strips {
+    height: 75vh;
+  }
+
+  .content .the-strips ul li a .strip-content,
+  .content .the-strips ul li a h3 {
+    display: block;
+    max-width: 990px;
+    padding: 20px;
+    margin: 0 auto;
+    font-size: 40px;
+  }
+
+  .read-more {
+    font-size: 14px;
+    color: $color__light_brown;
+  }
+
+  span {
+    max-width: 640px;
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 1.1;
+  }
+
+  h2 {
+    color: white;
+    text-align: left !important;
+    font-size: 20px;
+  }
+}

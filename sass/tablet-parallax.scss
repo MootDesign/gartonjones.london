@@ -1,0 +1,392 @@
+@import "compass/css3";
+@import "sizes";
+
+#tablet-parallax {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	#home .main {
+		max-width: 450px !important;
+		margin: 0 auto;
+	}
+
+	#pages > div {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		@include transition( transform 1s linear );
+		background-position: bottom 74px right 50% !important; // so it doesn't cover the gold footer bar
+		background-repeat: no-repeat !important;
+		background-size: contain !important;
+
+		.single-developments & {
+			top: -45px;
+		}
+
+		@for $i from 1 through 6 {
+			&:nth-child( #{$i} ) {
+				@include transform( translateX( ($i - 1) * 100% ) );
+
+				.single-developments & {
+					@include transform( translateY( ($i - 1) * 100% ) );
+				}
+			}
+		}
+
+		@media screen and ( max-width: 767px ) {
+			background: none !important;
+		}
+	}
+
+	#controls {
+		.control-left,
+		.control-right {
+			position: fixed;
+			top: 50%;
+			@include transform( translateY( -50% ) );
+			background: none;
+			border: none;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		.control-left {
+			left: 10px;
+		}
+
+		.control-right {
+			right: 10px;
+		}
+
+		&.hide-left {
+			.control-left {
+				display: none;
+			} 
+		}
+
+		&.hide-right {
+			.control-right {
+				display: none;
+			}
+		}
+	}
+
+	#facilities table {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transform( translate(-50%, -50%) );
+		border-spacing: 0;
+
+		td {
+			padding: 15px 5px;
+			border-bottom: 1px solid white;
+			border-right: 1px solid white;
+
+			&:last-child {
+				border-right: none;
+			}
+		}
+
+		tr:last-child td {
+			border-bottom: 0;
+		}
+	}
+
+	article {
+		top: 50% !important;
+		@include transform( translateY( -50% ) );
+		overflow: auto;
+		position: relative !important;
+
+		@media screen and ( orientation: portrait ) {
+			.page-template-parallax & {
+				max-width: calc( 100vw - 330px ) !important;
+				margin-right: 60px;
+				float: right;
+			}
+		}
+	}
+
+	#home article {
+		.single-developments & {
+			margin-top: -8% !important;
+			max-width: 600px;
+			margin: 0 auto;
+			overflow: hidden;
+			text-align: center;
+
+			h1 {
+				max-width: 450px;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	// NEWS PAGE PARALLAX
+	.page-id-58840 & #page-1,
+	.page-id-58840 & #page-2 {
+		article {
+			top: 46% !important;
+			width: 33%;
+			float: left;
+		}
+	}
+
+	.page-id-58840 & #page-3 {
+		article {
+			top: 46% !important;
+			width: 50%;
+			float: left;
+		}
+	}
+
+	.page-id-90060 & #page-3 {
+		article {
+			top: 25% !important;
+			@include transform( none );
+
+			form {
+				text-align: center;
+
+				#input_1_2_Container {
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+
+	.parallax-menu {
+		display: block !important;
+		margin-top: 0;
+		padding: 0;
+
+		.size-me & {
+			margin-top: -37.5px;
+		}
+
+		a {
+			font-size: 16px;
+		}
+	}
+
+    #gallery {
+		$time: 0.7s;
+		text-align: center;
+		// margin-top: -45px;
+		// padding-bottom: 45px;
+
+		.the-title {
+			display: block;
+			font-family: "Gilda Display","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+			font-size: 26px;
+			color: #FFF;
+			text-transform: uppercase;
+			position: absolute;
+			top: 50px;
+			top: 20px;
+			text-align: center;
+			width: 100%;
+			z-index: 6;
+			transition: all 0.4s ease 0s;
+		}
+
+		.search-button {
+			margin-top: 120px;
+			margin-top: 80px;
+			position: relative;
+			z-index: 5;
+		}
+
+		.images {
+			position: absolute;
+			width: 80%;
+			height: 80%;
+			left: 10%;
+			top: 13%;
+			perspective: 600px;
+		}
+
+		.image {
+			width: 50%;
+			height: 70%;
+			//                    top: 50%;
+			left: 50%;
+			position: absolute;
+			overflow: hidden;
+			@include user-select(none);
+			@include transition(transform $time ease,opacity $time ease, left $time, ease);
+			
+			img {
+				position: relative;
+				min-width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
+
+			//Out of visual elements
+			&.before {
+				@include transform(translateX(-196%) rotateY(-72deg) translateX(-209%));
+				opacity: 0;
+			}
+
+			&.after {
+				@include transform(translateX(196%) rotateY(72deg) translateX(209%));
+				opacity: 0;
+			}
+
+			&.before-1 {
+				@include transform(translateX(-55%) rotateY(-30deg) translateX(-50%) );
+				opacity: .5;
+			}
+
+			&.before-2 {
+				@include transform( translateX(-97%) rotateY(-44deg) translateX(-130%) );
+				opacity: .3;
+			}
+
+			&.after-1 {
+				@include transform(translateX(55%) rotateY(30deg) translateX(50%) );
+				opacity: .5;
+			}
+
+			&.after-2 {
+				@include transform( translateX(97%) rotateY(44deg) translateX(130%) );
+				opacity: .3;
+			}
+
+			&.hidden {
+				opacity: 0;
+
+				&.before {
+					left: 100%;
+				}
+
+				&.after {
+					left: 0%;
+				}
+			}
+
+			&.current {
+				cursor: pointer;
+				z-index: 3;
+				left: 50%;
+				opacity: 1;
+
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+		}
+
+		.arrows {
+			> div {
+				color: #fff;
+				top: 45%;
+				margin-top: 60px;
+			}
+
+			&.single {
+				.arrow-left {
+					left: 50%;
+					margin-left: -25%;
+				}
+
+				.arrow-right {
+					//                            right: auto;
+					//                            left: 50%;
+					margin-right: 22.5%;
+				}
+			}
+		}
+
+		#image-desc {
+			position: absolute;
+			width: 100%;
+			bottom: 10%;
+			text-align: center;
+
+			ul {
+				li {
+					position: absolute;
+					opacity: 0;
+					width: 100%;
+					@include transition(all 1s ease);
+
+					&.active {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+}
+
+.devview,
+.to-worth {
+	position: absolute;
+	z-index: 8;
+	display: block;
+}
+
+.tube {
+	.to-worth {
+		width: 340px;
+		height: 127px;
+		top: 90px;
+		left: 0;
+	}
+
+	.devview {
+		width: 100%;
+		height: 40px;
+		bottom: 110px;
+		left: 0;
+	}
+}
+
+.bus {
+	.to-worth {
+		width: 450px;
+		height: 220px;
+		bottom: 105px;
+	}
+
+	.devview {
+		width: 350px;
+		height: 150px;
+		bottom: 105px;
+		right: 40px;
+	}
+}
+
+.background-top {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: 0 120px;
+	background-size: contain;
+}
+
+.sub-title.circle-line {
+	border: 1px solid;
+	display: inline-block;
+	padding: 5px 30px;
+	margin-top: 15px;
+}
+
+#gform_wrapper_1 {
+	.gform_footer {
+		margin-top: 0;
+		padding-top: 0;
+
+		input {
+			margin-bottom: 0;
+		}
+	}
+}

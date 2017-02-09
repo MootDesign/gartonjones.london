@@ -1,0 +1,83 @@
+@import "compass/css3";
+@import "colors";
+@import "fonts";
+@import "sizes";
+
+$border-color: #c0c2c4;
+
+input[type="submit"] {
+    display: inline-block;
+    padding: 10px 30px;
+    background: $color__light_brown;
+    border: 1px solid $color__light_brown;
+    margin-bottom: 20px;
+    width: auto;
+    color: $color__white;
+    font-size: 16px !important;
+    font-family: $font__title !important;
+    cursor: pointer;
+    @include transition(all 0.4s ease);
+
+    &:hover {
+      background: $color__brown;
+      border-color: $color__brown;
+    }
+}
+
+#table {
+  display: table;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+
+  .cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+
+    form {
+      margin: 20px 0;
+    }
+  }
+}
+
+#tc,
+#refund {
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  max-height: 50%;
+  opacity: 0;
+  background: #fff;
+  padding: 20px;
+  z-index: $zindex__menu + 2;
+  color: $color__brown;
+  @include transition(all 0.5s ease);
+  @include scale(0);
+
+  &.visible {
+    opacity: 1;
+    @include scale(1);
+  }
+
+  .button-close-me {
+    background: #9CA1A6;
+    top: -10px;
+    right: -10px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  p, ul {
+    color: $color__brown;
+  }
+
+  ul {
+    list-style-type: circle;
+
+    li {
+      margin-left: 30px;
+    }
+  }
+}

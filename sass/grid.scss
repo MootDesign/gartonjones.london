@@ -1,0 +1,10 @@
+@import "grid-view";
+
+#grid {
+	height: calc( 100vh - 194px );
+	width: 100%;
+	
+	@media screen and ( max-width: $size__mobile ) {
+		height: calc( 100vh - 102px );
+	}
+}

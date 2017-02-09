@@ -1,0 +1,41 @@
+@import "compass/css3";
+
+$shakeAmp: 1deg;
+
+.the-boat img {
+  max-height: 500px;
+}
+
+.rope {
+  position: absolute;
+  right: 10%;
+}
+
+.shake-me {
+  position: absolute;
+  right: 0px;
+  top: 6px;
+  @include transform-origin(0, 55%);
+  // @include animation(shake-slow 8s infinite alternate linear);
+
+  &.stop-shake {
+    @include animation(none);
+  }
+}
+
+@include keyframes(shake-slow) {
+  0% {
+    @include rotate(-$shakeAmp);
+  }
+  50% {
+    @include rotate(0deg);
+  }
+  75% {
+    @include rotate($shakeAmp);
+  }
+  100% {
+    @include rotate(0deg);
+  }
+
+}
+

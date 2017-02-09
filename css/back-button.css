@@ -1,0 +1,190 @@
+#back-button {
+    background: #AC9857;
+    font-family: 'TubeFont';
+    font-size: 16px;
+    padding: 22px 8px 13px 18px;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    cursor: pointer;
+    -webkit-backface-visibility: hidden;
+    text-align: center;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -moz-transform: translate(-100%, -50%);
+    -ms-transform: translate(-100%, -50%);
+    -webkit-transform: translate(-100%, -50%);
+    transform: translate(-100%, -50%)
+}
+
+@media screen and (max-width: 1280px) {
+    #back-button {
+        display: block !important;
+    }
+}
+
+#back-button span {
+    display: block;
+    padding-top: 9px
+}
+
+#back-button.visible {
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%)
+}
+
+#back-button svg path {
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease
+}
+
+#back-button:hover {
+    -moz-transform: translate(10px, -50%);
+    -ms-transform: translate(10px, -50%);
+    -webkit-transform: translate(10px, -50%);
+    transform: translate(10px, -50%)
+}
+
+#back-button:hover svg path {
+    fill: #fff !important
+}
+
+#back-history {
+    font-family: 'TubeFont';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+    opacity: 0;
+    pointer-events: none;
+    -moz-transition: opacity 0.1s ease;
+    -o-transition: opacity 0.1s ease;
+    -webkit-transition: opacity 0.1s ease;
+    transition: opacity 0.1s ease
+}
+
+#back-history.visible {
+    opacity: 1;
+    pointer-events: auto
+}
+
+#back-history .items {
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+    height: 100%;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    position: relative
+}
+
+#back-history .items div {
+    padding: 0;
+    margin: 0
+}
+
+#back-history .items .shade {
+    background: rgba(0, 0, 0, 0.9);
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1
+}
+
+#back-history .items .item {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    display: table;
+    height: 100%
+}
+
+#back-history .items .tube {
+    background: #3871c1;
+    height: 8px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: 7px;
+    width: 0
+}
+
+#back-history .items .tube.tube-first {
+    left: 50%;
+    max-width: 51%
+}
+
+#back-history .items .tube.tube-last {
+    max-width: 51%
+}
+
+#back-history .items .content {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 20px
+}
+
+#back-history .items a {
+    display: inline-block;
+    opacity: 0;
+    position: relative;
+    color: #fff;
+    -moz-transition: opacity 0.4s ease, -moz-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    -o-transition: opacity 0.4s ease, -o-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    -webkit-transition: opacity 0.4s ease, -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    -moz-transform: translateX(-150%);
+    -ms-transform: translateX(-150%);
+    -webkit-transform: translateX(-150%);
+    transform: translateX(-150%)
+}
+
+#back-history .items a.visible {
+    opacity: 1;
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0)
+}
+
+#back-history .items a:hover {
+    color: #AC9857
+}
+
+#back-history .items a:hover:after {
+    background: #fff
+}
+
+#back-history .items a:after {
+    content: '';
+    background: #161616;
+    display: block;
+    width: 28px;
+    height: 28px;
+    border: 6px solid #3871c1;
+    border-radius: 50%;
+    margin: auto;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease
+}
+
+#back-history .items a.active:after {
+    background: #fff
+}
+
+#back-history .items .button-close {
+    position: relative !important;
+    top: 11px
+}

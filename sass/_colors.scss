@@ -1,0 +1,45 @@
+$color__site-menu-bg: #fff;
+$color__site-menu-h3: #ddd;
+
+//Main colors
+$color__white: #fff;
+$color__brown: #7C6F56;
+$color__light_brown: #AC9857;
+// $color__light_brown: #a69646;
+$color__medium_brown: #a39889;
+$color__light_gray: darken( #a29a8a, 5% );
+$color__lighter_gray: #c0c2c4;
+
+// get a bit darker color
+$color__medium_gray: darken( $color__light_gray, 15% );
+
+$color__dark_gray: darken( $color__light_gray, 25% );
+$color__dark_gray: #141414;
+
+//Menu items colors
+$color__site-menu-item-0: #C8C4D6;
+$color__site-menu-item-1: #D3867D;
+$color__site-menu-item-2: #555555;
+$color__site-menu-item-3: #AC4156;
+$color__site-menu-item-4: #A5C373;
+$color__site-menu-item-5: #A4C0E4;
+$color__site-menu-item-6: #68307a;
+$color__site-menu-item-7: #6363a0;
+
+$color__default-font-color: #ffffff;
+$color__default-header-color: #aC9857;
+
+$border-color: #c0c2c4;
+
+//Navigtion menu
+$color__navigation_second: #3871c1;
+$color__navigation_second_westminster: #ffbf00;
+$color__tube-central_line: #e6130d;
+$color__back-tube: #E87511;
+
+// Links
+$color__link-focus: #000000;
+
+// TUBE LINES
+//
+$color__circle-line: #FFCC00;

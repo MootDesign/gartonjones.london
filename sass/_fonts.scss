@@ -1,0 +1,89 @@
+$font__title: 'Gilda Display', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$font__OpenSans: 'Open Sans', sans-serif;
+$font__Helvetica: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$font__paragraph: 'PT Sans', 'Helvetica Neue', Helvetica, Arial;
+$font__underground: 'Underground', 'Helvetica Neue', Helvetica, Arial;
+$font__dot: 'Dotto', mono;
+
+$font__size_menu: 12px;
+$font__size_footer_offices: 14px;
+$font__size_title: 24px;
+$font__size_paragraph: 12px;
+$font__size_options: 14px;
+
+
+$line__height-paragraph: 17px;
+
+@font-face {
+	font-family: 'Dotto';
+	src:url('fonts/DottoDeluxeNeu.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Underground';
+	src:url('fonts/DINNeuzeitGrotesk-Light.eot');
+	src:url('fonts/DINNeuzeitGrotesk-Light.eot') format('embedded-opentype'),
+		url('fonts/DINNeuzeitGrotesk-Light.ttf') format('truetype'),
+		url('fonts/DINNeuzeitGrotesk-Light.woff') format('woff');
+		// url('../fonts/icomoon.svg?4kxdjc#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?4kxdjc');
+	src:url('fonts/icomoon.eot?#iefix4kxdjc') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?4kxdjc') format('truetype'),
+		url('fonts/icomoon.woff?4kxdjc') format('woff'),
+		url('fonts/icomoon.svg?4kxdjc#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'TubeFont';
+	src:url('fonts/p22-johnston-underground.ttf?4kxdjc') format('truetype'),
+		url('fonts/p22-johnston-underground.woff?4kxdjc') format('woff'),
+		url('fonts/p22-johnston-underground.svg?4kxdjc#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-receptions:before {
+	content: "\e604";
+}
+.icon-bathrooms:before {
+	content: "\e605";
+}
+.icon-beds:before {
+	content: "\e606";
+}
+.icon-photo:before {
+	content: "\e600";
+}
+.icon-map:before {
+	content: "\e601";
+}
+.icon-grid:before {
+	content: "\e602";
+}
+.icon-a-z:before {
+	content: "\e603";
+}

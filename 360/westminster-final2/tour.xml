@@ -1,0 +1,425 @@
+<krpano version="1.18" title="Virtual Tour" onstart="startup();">
+
+	<!-- <include url="skin/vtourskin.xml" /> -->
+
+	<!-- set skin settings: bingmaps? gyro? thumbnails? tooltips? -->
+	<skin_settings maps="false"
+	               maps_type="bing"
+	               maps_bing_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="BLEND(0.5)"
+	               controlbar_offset="20"
+	               />
+
+	<!-- set optional skin logo url -->
+	<layer name="skin_logo" url="" scale="0.25" opened_onclick="openurl('...',_blank);" />
+
+	<style name="normal"
+		distorted="true"
+		scale="0.7"
+		alpha="0"
+		onloaded="tween(atv, 7.581, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+		/>
+
+	<style name="normalStyle"
+
+		/>
+
+	<style name="bigStyle"
+		distorted = "true"
+		scale = "0.62"
+		alpha="0"
+		/>
+
+
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+	</action>
+
+	<scene name="scene_Westminister_main_final" title="Westminister main final" onstart="" thumburl="panos/Westminister_main_final.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="364.134" vlookat="0.000" fovtype="MFOV" fov="86.836" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="range" vlookatmin="-28.149" vlookatmax="28.149" />
+
+		<preview url="panos/Westminister_main_final.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Westminister_main_final.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/Westminister_main_final.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<!-- Guy in the red -->
+		<hotspot name="spot1a"
+			 ath="-20.948"
+			 atv="-4.211"
+			 url="images/team-member3.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot1a' ))"
+			 style="normalStyle"
+			 />
+
+		<!-- Woman in black -->
+		<hotspot name="spot2a"
+			 ath="-10.878"
+			 atv="-4.237"
+			 url="images/team-member3.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot2a' ))"
+			 style="normalStyle"
+			/>
+
+		<!-- Guy in black -->
+		<hotspot name="spot3"
+			 ath="3.080"
+			 atv="-4.807"
+			 url="images/team-member3.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot3' ))"
+			 style="normalStyle"
+			/>
+
+		<!-- Blondy -->
+		<hotspot name="spot4"
+			 ath="11.457"
+			 atv="-4.862"
+			 url="images/team-member3.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot4' ))"
+			 style="normalStyle"
+			/>
+
+		<!-- Pinky -->
+		<hotspot name="spot5"
+			 ath="21.094"
+			 atv="-4.307"
+			 url="images/team-member3.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot5' ))"
+			 style="normalStyle"
+			/>
+
+		<!-- Blackhair -->
+		<hotspot name="spot6"
+			 ath="33.268"
+			 atv="-4.554"
+			 url="images/team-member3.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot6' ))"
+			 style="normalStyle"
+			/>
+
+		<!-- Door to outside -->
+		<hotspot name="spot7"
+			 linkedscene="scene_outside"
+			 ath="105.603"
+			 atv="-4.459"
+			 url="images/team-door.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+			 type="image"
+			 style="bigStyle"
+			/>
+
+		<!-- To basement -->
+		<hotspot name="spot8"
+			 linkedscene="scene_basement-test"
+			 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+			 ath="-123.064"
+			 atv="1.043"
+			 url="images/team-door.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 style="bigStyle"
+			 devices="flash"
+			/>
+
+
+		<!-- Office up on the left -->
+		<hotspot name="spot10"
+			 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+			 linkedscene="scene_office-left-test"
+			 ath="-84.738"
+			 atv="-13.737"
+			 url="images/team-door.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 style="bigStyle"
+			 devices="flash"
+			/>
+
+		<!-- Office up on the right -->
+		<hotspot name="spot11"
+			 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+			 linkedscene="scene_Kieran_s_office"
+			 ath="-74.468"
+			 atv="-13.544"
+			 url="images/team-door.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 style="bigStyle"
+			 devices="flash"
+			/>
+
+		<!-- Magazine -->
+		<hotspot name="spot12"
+			 ath="-172.400"
+			 atv="8.334"
+			 url="images/team-magazine.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="looktohotspot();js(blurEffect());wait(1);openurl(/magazine/, _self);wait(15);js(removeBlur())"
+			 style="bigStyle"
+			/>
+
+		<!-- Blackhair -->
+		<hotspot name="spot13"
+			 ath="43.285"
+			 atv="-3.658"
+			 url="images/team-member3.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot13' ))"
+			 style="normalStyle"
+			/>
+
+		<!-- Blackhair -->
+		<hotspot name="spot14"
+			 ath="58.354"
+			 atv="-1.999"
+			 url="images/team-member3.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot14' ))"
+			 style="normalStyle"
+			/>
+
+		<!-- <hotspot name="spot13"
+				 ath="408.728"
+				 atv="-0.449"
+				 url="images/team-member3.png"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'spot13' ))"
+				 style="normalStyle"
+		 		/>
+
+		<hotspot name="spot14"
+				 ath="419.651"
+				 atv="-0.565"
+				 url="images/team-member3.png"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'spot14' ))"
+				 style="normalStyle"
+		 		/> -->
+	</scene>
+
+<!-- BASEMENT -->
+    <scene name="scene_basement-test" title="basement-test" onstart="" thumburl="panos/basement-test.tiles/thumb.jpg" lat="" lng="" heading="" devices="flash">
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/basement-test.tiles/preview.jpg" />
+
+        <image type="SPHERE" hfov="120.00" vfov="38.370672" voffset="0.00" multires="true" tilesize="4000" progressive="true">
+            <level tiledimagewidth="7856" tiledimageheight="2512">
+                <sphere url="panos/basement-test.tiles/pano_%v%h.jpg" />
+            </level>
+        </image>
+
+        <!-- place your scene hotspots here -->
+        <!-- Magazine -->
+        <hotspot name="spot1"
+        	 ath="-27.611"
+        	 atv="0.446"
+        	 url="images/team-magazine.png"
+			 onloaded="tween(atv, 0.446, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 onclick="looktohotspot();js(blurEffect());wait(1);openurl(/magazine/, _self);wait(15);js(removeBlur())"
+			 style="normalStyle"
+         	/>
+
+        <!-- Magazine -->
+        <hotspot name="spot2"
+        	 ath="-24.762"
+        	 atv="0.580"
+        	 url="images/team-magazine.png"
+			 onloaded="tween(atv, 0.580, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 onclick="looktohotspot();js(blurEffect());wait(1);openurl(/magazine/, _self);wait(15);js(removeBlur())"
+			 style="normalStyle"
+         	/>
+
+        <!-- Magazine -->
+        <hotspot name="spot3"
+        	 ath="-21.950"
+        	 atv="0.625"
+        	 url="images/team-magazine.png"
+			 onloaded="tween(atv, 0.625, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 onclick="looktohotspot();js(blurEffect());wait(1);openurl(/magazine/, _self);wait(15);js(removeBlur())"
+			 style="normalStyle"
+         	/>
+
+        <!-- Magazine -->
+        <hotspot name="spot4"
+        	 ath="-19.276"
+        	 atv="0.757"
+        	 url="images/team-magazine.png"
+			 onloaded="tween(atv, 0.757, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 onclick="looktohotspot();js(blurEffect());wait(1);openurl(/magazine/, _self);wait(15);js(removeBlur())"
+			 style="normalStyle"
+         	/>
+
+        <!-- Doot upstairs -->
+        <hotspot name="spot5"
+        	 ath="48.987"
+        	 atv="1.206"
+ 			 linkedscene="scene_Westminister_main_final"
+			 url="images/team-door.png"
+			 onloaded="tween(atv, 1.206, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 style="bigStyle"
+			 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+
+         	/>
+    </scene>
+
+<!-- OFFICE LEFT -->
+    <scene name="scene_office-left-test" title="office-left-test" onstart="" thumburl="panos/office-left-test.tiles/thumb.jpg" lat="" lng="" heading="" devices="flash">
+
+        <view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+        <preview url="panos/office-left-test.tiles/preview.jpg" />
+
+        <image type="SPHERE" hfov="180.00" vfov="42.566667" voffset="0.00" multires="true" tilesize="4000" progressive="true">
+            <level tiledimagewidth="8000" tiledimageheight="1891">
+                <sphere url="panos/office-left-test.tiles/pano_%v%h.jpg" />
+            </level>
+        </image>
+
+        <!-- place your scene hotspots here -->
+        <!-- Blond tiger -->
+        <hotspot name="spot1"
+        	 ath="-45.463"
+        	 atv="-20"
+ 			 url="images/team-member3.png"
+			 onloaded="tween(atv, -5.316, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot1' ))"
+			 style="normalStyle"
+         	/>
+
+		<!-- Brunette -->
+        <hotspot name="spot2"
+        	 ath="0.790"
+        	 atv="-20"
+  			 url="images/team-member3.png"
+			 onloaded="tween(atv, -3.414, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'spot2' ))"
+			 style="normalStyle"
+         	/>
+
+         <!-- Door to the other office -->
+        <hotspot name="spot3"
+        	 ath="56.050"
+        	 atv="-20"
+        	 linkedscene="scene_Kieran_s_office"
+			 url="images/team-door.png"
+			 onloaded="tween(atv, -0.546, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 style="bigStyle"
+			 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+
+         	/>
+
+         <!-- Door to main -->
+        <hotspot name="spot4"
+        	 ath="76.559"
+        	 atv="-20"
+ 			 linkedscene="scene_Westminister_main_final"
+			 url="images/team-door.png"
+			 onloaded="tween(atv, -0.356, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 style="bigStyle"
+			 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+
+         	/>
+    </scene>
+
+    <scene name="scene_Kieran_s_office" title="Kieran&apos;s office" onstart="" thumburl="panos/Kieran_s_office.tiles/thumb.jpg" lat="51.49869444" lng="-0.12657500" heading="336.1" devices="flash">
+
+    	<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+    	<preview url="panos/Kieran_s_office.tiles/preview.jpg" />
+
+    	<image type="SPHERE" hfov="180.00" vfov="42.781690" voffset="0.00" multires="true" tilesize="4000" progressive="true">
+    		<level tiledimagewidth="6816" tiledimageheight="1620">
+    			<sphere url="panos/Kieran_s_office.tiles/pano_%v%h.jpg" />
+    		</level>
+    	</image>
+
+    	<!-- place your scene hotspots here -->
+    	<!-- Door -->
+		<hotspot name="spot1"
+				 ath="44.759"
+				 atv="8.921"
+				 linkedscene="scene_westminister_main_final"
+				 url="images/team-door.png"
+				 onloaded="tween(atv, 8.921, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 style="bigStyle"
+				 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+		/>
+
+				 <!-- Guy -->
+		<hotspot name="spot2"
+				 ath="2.753"
+				 atv="-5.036"
+				 url="images/team-member3.png"
+				 onloaded="tween(atv, -5.036, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'kieran' ))"
+				 style="normalStyle"
+		/>
+
+				<!-- Girl -->
+		<hotspot name="spot3"
+				 ath="-29.539"
+				 atv="-5.157"
+				 url="images/team-member3.png"
+				 onloaded="tween(atv, -5.157, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'sharon' ))"
+				 style="normalStyle"
+		 />
+
+    </scene>
+
+    <scene name="scene_outside" title="outside" onstart="" thumburl="panos/outside.tiles/thumb.jpg" lat="" lng="" heading="">
+
+    	<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="range" vlookatmin="-30.139" vlookatmax="30.139" />
+
+    	<preview url="panos/outside.tiles/preview.jpg" />
+
+    	<image>
+    		<cube url="panos/outside.tiles/pano_%s.jpg" />
+    		<mobile>
+    			<cube url="panos/outside.tiles/mobile_%s.jpg" />
+    		</mobile>
+    	</image>
+
+    	<!-- place your scene hotspots here -->
+    	<hotspot name="spot1"
+    		ath="114.500"
+    		atv="-3.471"
+			linkedscene="scene_Westminister_main_final"
+			url="images/team-door.png"
+			onloaded="tween(atv, -0.356, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			style="bigStyle"
+			onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+    	/>
+
+    </scene>
+
+</krpano>

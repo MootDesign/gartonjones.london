@@ -1,0 +1,363 @@
+@import "colors";
+@import "fonts";
+@import "sizes";
+@import "compass/css3";
+$color__grid_facilities: #ac9757;
+
+// @include background-image( linear-gradient( to bottom, rgba(30,87,153,0) 0%,rgba(0,0,0,0.8) 100% ) );
+
+nav.top-bar {
+	position: fixed;
+}
+
+.quicklinks-content {
+	max-width: 720px;
+	margin: 10px auto;
+	text-align: center;
+	margin-top: 190px;
+
+	@media screen and (max-width: 767px) {
+		margin-top: 130px;
+	}
+
+	p {
+		font-size: 13px;
+		line-height: 15px;
+	}
+}
+
+#call-the-office {
+	top: 72px;
+	right: 10px;
+	left: auto;
+	@include transform(none);
+	background: none !important;
+	position: fixed !important;
+
+	@media screen and (max-width: 767px) {
+		top: 80px;
+		left: auto;
+		right: 0;
+		width: 50vw;
+		font-size: 18px;
+	}
+}
+
+.refined-search {
+	position: fixed !important;
+	top: 120px;
+
+	@media screen and (max-width: 767px) {
+		top: 72px;
+	}
+}
+
+#grid {
+	.item {
+		float: left;
+		position: relative;
+		cursor: pointer;
+		overflow: hidden;
+	}
+
+	.image-wrapper {
+		&.stc {
+		  &:before {
+		    position: absolute;
+		    content: '';
+		    display: inline-block;
+		    width: 0;
+		    height: 0;
+		    border-style: solid;
+		    border-width: 92px 136px 0 0;
+		    border-color: #ac9757 transparent transparent transparent;
+		  }
+
+		  &:after {
+		    content: 'Under Offer';
+		    white-space: pre;
+		    display: inline-block;
+		    position: absolute;
+		    top: 10px;
+		    left: 6px;
+		    font-size: 12px;
+		    line-height: 19px;
+		  }
+
+		  &.sale:after {
+		    content: 'SALE AGREED' !important;
+		  }
+
+		  &.let:after {
+		    content: 'LET AGREED' !important;
+		  }
+		}	
+	}
+
+	.front {
+	    .bg {
+	      @include background-image( linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(0,0,0,0.6) 100% ) );
+	      position: absolute;
+	      left: 0;
+	      bottom: 0;
+	      height: 200px;
+	      width: 100%;
+	    }
+
+	    img {
+	    	min-width: 100%;
+	    	min-height: 100%;
+	    }
+	}
+
+	.info {
+		// background: image-url("bgfade.png") repeat-x bottom;
+		// @include background-image(linear-gradient( rgba( 0, 0, 0, 0 ), rgba( 0, 0, 0, 1 ) ) );
+		position: absolute;
+		bottom: 0;
+		display: block;
+		width: 100%;
+		text-align: center;
+		font-family: $font__title;
+		z-index: 1;
+
+		&.knowledge-style {
+			position: static;
+			top: 0;
+
+			.address {
+				font-size: 37px;
+				font-family: "Open Sans",sans-serif;
+				font-weight: bold;
+				position: relative;
+				margin: 0 auto 10px auto;
+				text-transform: uppercase;
+
+				transform: translate(-50%, -50%);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 100%;
+			}
+
+			.categories {
+				font-family: "Underground","Helvetica Neue",Helvetica,Arial;
+				font-size: 20px;
+				text-transform: uppercase;
+				margin-top: 20px;
+			}
+
+		}
+
+		.title {
+			font-size: 24px;
+			line-height: 1.35;
+		}
+
+		.address {
+			font-size: 16px;
+			max-width: 70%;
+			margin: auto;
+			line-height: 1.25;
+		}
+
+		.facilities {
+			margin-top: 5px;
+
+			.price {
+				font-family: $font__title;
+				display: inline-block;
+				width: 50%;
+				text-align: center;
+				font-size: 16px;
+				float: left;
+			}
+
+			.sqft {
+				width: 50%;
+			}
+		}
+	}
+
+	.facilities {
+		background: $color__grid_facilities;
+		height: 57px;
+		width: 100%;
+		max-width: 225px;
+		margin: 0 auto;
+		padding: 2px 0 0 0;
+
+		@media screen and (max-width: 500px) {
+			margin-right: 15px;
+		}
+
+		li {
+			display: inline-block;
+			vertical-align: bottom;
+			// line-height: 30px;
+			width: 32%;
+			margin: 0;
+			padding: 0;
+
+			&.icon {
+				span {
+					font-family: Arial;
+					font-size: 12px;
+					display: inline-block;
+					font-weight: bold;
+					vertical-align: bottom;
+					padding-left: 10px;
+				}
+			}
+
+			// &.icon-receptions {
+			//   vertical-align: bottom;
+			//
+			//   &:before {
+			//     font-size: 20px;
+			//   }
+			// }
+
+			&.icon-bathrooms {
+				// vertical-align: top;
+
+				&:before {
+					font-size: 22px;
+				}
+			}
+
+		}
+	}
+
+	.back {
+		display: none;
+		text-align: center;
+		// padding-top: 10px;
+
+		.image-wrapper {
+			.bg {
+				background: rgba( $color__light_brown, 0.95 );
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
+		}
+
+		.button-close {
+			top: 0px;
+			right: 0px;
+			@include scale(0.8);
+		}
+
+		.data div {
+			max-width: 80%;
+			margin: auto;
+
+			@media screen and ( max-width: $size__mobile ) {
+				max-width: 90% !important;
+			}
+		}
+
+		.title {
+			font-size: 26px;
+			line-height: 1.05;
+		}
+
+		.address {
+			font-size: 18px;
+			line-height: 1.25;
+		}
+
+		.price, .fees {
+			font-size: 16px;
+		}
+
+		.facilities {
+			background: none;
+			height: 40px;
+
+			.icon-receptions {
+				position: relative;
+				top: 1px;
+			}
+		}
+
+		.description {
+			font-size: 14px;
+			max-width: 60% !important;
+			line-height: 1.45;
+		}
+
+		.link {
+			max-width: 67%;
+			margin: 20px auto;
+
+			@media screen and ( max-width: $size__mobile ) {
+				max-width: 90%;
+			}
+
+			li {
+				a {
+					color: $color__white;
+
+					&:hover {
+						color: black;
+					}
+				}
+
+				&.view {
+					float: left;
+				}
+
+				&.map {
+					float: right;
+				}
+
+			}
+		}
+	}
+}
+
+.fees {
+	cursor: pointer;
+
+	color: $color__white;
+
+	position: absolute;
+	left: 30px;
+	display: block;
+	height: 57px;
+	background: $color__light_brown;
+	bottom: 0px;
+	width: 90px;
+	padding: 4px 5px;
+
+	@media screen and (max-width: 500px) {
+		font-size: 14px;
+		line-height: 17px;
+		height: 44px;
+		padding-top: 6px;
+		box-sizing: border-box;
+		left: 0;
+		top: auto;
+	}
+
+	&:hover {
+		color: $color__brown;
+	}
+}
+
+.navigation-menu {
+	position: fixed !important;
+	top: 45px;
+	background: rgba(30,30,30,0.9) !important;
+}
+
+#footer-inner > .medium-2 {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}

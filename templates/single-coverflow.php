@@ -1,0 +1,173 @@
+<?php
+// knowledge coverflow
+// wp_enqueue_script( 'moot-coverflow', get_template_directory_uri() . '/coverflow/FWDSimple3DCoverflow_uncompressed.js', array( 'jquery' ), '20131209', false );
+wp_enqueue_script( 'moot-coverflow', get_template_directory_uri() . '/coverflow/FWDSimple3DCoverflow_compressed.min.js', array( 'jquery' ), '20131209', true );
+//wp_enqueue_script( 'moot-coverflow-js', get_template_directory_uri() . '/js/src/single/coverflow-developments.js', array( 'jquery', 'moot-coverflow' ), '20131209', true );
+wp_enqueue_script( 'moot-coverflow-js', get_template_directory_uri() . '/js/min/single/coverflow-developments.min.js', array( 'jquery', 'moot-coverflow' ), '20131209', true );
+wp_enqueue_script( 'swiper', get_template_directory_uri() . '/js/idangerous.swiper-2.1.min.js', array( 'jquery' ), '20131209', true  );
+wp_enqueue_script( 'swiper-2', get_template_directory_uri() . '/js/idangerous.swiper.3dflow.min.js', array( 'jquery' ), '20131209', true );
+?>
+
+<div id="myDiv"></div>
+
+<?php
+function gj_generate_coverflow_data() {
+	global $gj_meta_query; // bug fix by Ilia
+	$post_type = isset( $GLOBALS['coverpost_type'] ) ? $GLOBALS['coverpost_type'] : 'developments';
+	$args = array(
+		'post_type' => $post_type,
+		'post_status'      => 'publish',
+		'posts_per_page'   => -1,
+		'orderby' => 'post_title',
+		'order' => 'ASC'
+	);
+
+	// bug fix by Ilia
+	if (isset($gj_meta_query) && is_array($gj_meta_query)) {
+		$args['post_type'] = 'post';
+		$args["meta_query"] = $gj_meta_query;
+	}
+	// bug fix by Ilia
+
+//	var_dump($args);die("template");
+
+	$gj_query = new WP_Query( $args );
+//var_dump($gj_query); die ("qty template  = ".count($gj_query));
+	$coverflow_id = isset( $GLOBALS['coverflow_id'] ) ? $GLOBALS['coverflow_id'] : "coverflowData";
+	$coverflow_myDiv = isset( $GLOBALS['coverflow_myDiv'] ) ? $GLOBALS['coverflow_myDiv'] : "myDiv";
+	if ( $gj_query->have_posts() ) :
+?>
+
+		<!-- coverflow data -->
+		<ul id="<?php echo $coverflow_id ?>" style="display: none;" class="coverflow-me" data-dest="<?php echo $coverflow_myDiv ?>">
+
+			<!-- category  -->
+			<ul data-cat="+ Category one">
+
+		<?php
+				// Start the Loop.
+
+				$coverData = array();
+				while ( $gj_query->have_posts() ) : $gj_query->the_post();
+					if (has_post_thumbnail( get_the_ID() ) ) {
+	  			 	$img = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
+						$img = $img[0];
+					} else {
+						$img = get_field( 'custom_background' );
+						$lmap = get_field( 'location_map_image' );
+						if( $img['mime_type' ] == "video/mp4" ) {
+							$img = $lmap;
+							$img = $img['url'];
+						} else {
+							$url = wp_get_attachment_image_src( $img['id'], 'large' );
+							$img = $url[0];
+						}
+					}
+
+					if( ! $img ) {
+						$url = get_template_directory_uri() . '/img/default.png';
+					}
+
+					$category = get_the_category( get_the_ID() );
+					$category_name = ( isset( $category[0] ) ) ? $category[0]->name : '';
+
+					$intro_text = get_field( 'welcome_message' );
+					if ( ! $intro_text ) {
+						$intro_text = ''; 
+					}
+					$price = get_field( 'price' );
+					$price = number_format($price);
+					if ( ! $price ) {
+						$price = ''; 
+					}
+					$bedrooms = get_field( 'bedrooms' );
+					if ( ! $bedrooms ) {
+						$bedrooms = ''; 
+					}
+					$square_foot = get_field( 'square_foot' );
+					if ( ! $square_foot ) {
+						$square_foot = ''; 
+					}
+
+					$i = 0;
+					$coverData[] = array(
+						'id' => get_the_ID(),
+						'link' => get_the_permalink(),
+						'img' => $img,
+						'title' => get_the_title(),
+						'letter' => strtolower( get_the_title()[0] ),
+						'category' => $category_name,
+						'marker' => strtolower( get_field( 'marker_icon', get_the_ID() ) ),
+						'type' => get_post_type(),
+						'bg' => 'url(' . $img . ')',
+						'youtube' => get_field( 'youtube' ),
+						'video' => get_field( 'video' ),
+						'intro_text' => $intro_text,
+						'price' => $price,
+						'bedrooms' => $bedrooms,
+						'sqft' => $square_foot,
+					);
+		?>
+					<ul>
+						<li data-type="<?php echo ( @$GLOBALS['coverpost_type'] != "videos") ? 'link' : 'media'; ?>" data-url="<?php the_permalink(); ?>"></li><?php // points to the permalink. When image clicked, data-url is executed ?>
+						<li data-thumbnail-path="<?php echo $img; ?>"></li>
+						<li data-thumbnail-text="">
+							<div class="flowWrapper" style="float: left; width: 100%; height: auto; padding-top: 5px">
+								<p class="largeLabel">
+									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+								</p>
+					            <p class="flowLinks" style="display: none">
+					            	<script>
+													<?php global $post; ?>
+
+				            	     var myid = "qv<?php echo $post->ID; ?>";
+					            	</script>
+									<?php if( ! isset( $GLOBALS[ 'coverpost_share' ] ) ) : ?>
+									<ul class="options" style="display: none">
+										<li><a href="#" class="qv-link" data-id="<?php echo $i ?>">+ Quick View</a></li>
+										<li><?php if (function_exists('wpfp_link')) { wpfp_link(); } ?></li>
+										<li><a href="<?php the_permalink(); ?>">+ Full Details</a></li>
+										<li><a href="<?php the_permalink(); ?>?map=1">+ View on Map</a></li>
+									</ul>
+									<?php else: ?>
+										<ul class="options" style="">
+											<li>
+												<?php
+													if( function_exists( 'gj_add_socials_share' ) ) {
+														gj_add_socials_share();
+													} else {
+														require_once( dirname( __FILE__ ) . '/../includes/socials.php' );
+													}
+													?>
+											</li>
+											<li class="enquiry"><a href="#" class="qv-enquiry" data-id="<?php echo get_the_ID() ?>">Please click here to enquiry about a development</a></li>
+										</ul>
+									<?php endif; ?>
+					            </p>
+					        </div>
+						</li>
+					</ul>
+		     <?php
+			        $i++;
+				endwhile;
+
+			?>
+		    </ul>
+		</ul>
+
+		<script>
+			_coverflows = ( typeof( _coverflows ) == 'undefined' ) ? [] : _coverflows;
+
+			_coverflows.push( { id: '<?php echo $coverflow_id ?>',
+			 dest: '<?php echo $coverflow_myDiv ?>',
+			 data: <?php echo json_encode( $coverData ) ?>
+			} );
+		</script>
+<?php
+
+	endif;
+
+	wp_reset_query();
+}
+
+gj_generate_coverflow_data();

@@ -1,0 +1,346 @@
+<krpano version="1.18" title="Virtual Tour" onstart="startup();">
+
+	<!-- <include url="skin/vtourskin.xml" /> -->
+
+	<!-- set skin settings: bingmaps? gyro? thumbnails? tooltips? -->
+	<skin_settings maps="true"
+	               maps_type="bing"
+	               maps_bing_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="BLEND(0.5)"
+	               controlbar_offset="20"
+	               />
+
+	<!-- set optional skin logo url -->
+	<layer name="skin_logo" url="" scale="0.25" opened_onclick="openurl('...',_blank);" />
+
+
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+	</action>
+
+	<style name="normalStyle"
+		distorted = "true"
+		scale = "0.7"
+		alpha="0"
+	/>
+
+
+	<scene name="scene_Nine_Elms_test_3final" title="Nine Elms test 3final" onstart="" thumburl="panos/Nine_Elms_test_3final.tiles/thumb.jpg" lat="51.49220278" lng="-0.12152500" heading="346.3">
+
+		<view hlookat="996.419" vlookat="1.649" fovtype="MFOV" fov="92.928" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="range" vlookatmin="-31.078" vlookatmax="31.078" />
+
+		<preview url="panos/Nine_Elms_test_3final.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Nine_Elms_test_3final.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/Nine_Elms_test_3final.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="tom"
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="-76.509" atv="-6.543"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'tom' ))"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+
+		<hotspot name="magdalena"
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="167.751" atv="-6.160"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'magdalena' ))"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		<hotspot name="riaan"
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="-95.463" atv="-6.177"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'riaan' ))"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		<hotspot name="gosia"
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="-104.755" atv="-6.102"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'gosia' ))"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+
+<!-- 		<hotspot name="magazine"
+				 type="image"
+				 url="images/team-magazine.png"
+				 ath="-49.970" atv="0.020"
+				 onloaded="tween(atv, 0.020, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 onclick="looktohotspot('magazine');js(blurEffect());wait(1);openurl(/magazine/, _self);wait(15);js(removeBlur())"
+				 onover="tween(ry, 360, 1, easeInOutQuad)"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad)"
+				 style="normalStyle"
+				 /> -->
+
+		<hotspot name="door"
+				 ath="42.875" atv="-2.854"
+				 onloaded="tween(alpha, 1, 1)"
+				 type="image"
+                 url="images/team-door.png"
+         		 onout="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+				 linkedscene="scene_outside"
+				 />
+
+		<hotspot name="spot11"
+				 ath="-66.588"
+				 atv="-6.549"
+				 type="image"
+				 url="images/team-member3.png"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'spot11' ))"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad)"
+				 style="normalStyle"
+		 		/>
+
+		<hotspot name="spot9"
+				 ath="-117.768"
+				 atv="-7.018"
+				 type="image"
+				 url="images/team-member3.png"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'spot9' ))"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad)"
+				 style="normalStyle"
+				/>
+
+		<hotspot name="spot10"
+		 		 ath="-49.969"
+				 atv="-5.602"
+				 type="image"
+				 url="images/team-member3.png"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'spot10' ))"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad)"
+				 style="normalStyle"
+		 		/>
+
+ 		<!-- Magazine -->
+		
+
+		 <!-- Magazine -->
+		<hotspot name="spot12"
+			 ath="170.522"
+			 atv="11.374"
+			 url="images/team-magazine.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 style="normalStyle"
+			 onclick="looktohotspot();js(blurEffect());wait(1);openurl(/magazine/, _self);wait(15);js(removeBlur())"
+		/>
+
+		 <!-- Magazine -->
+		
+
+		 <!-- Picture -->
+		<hotspot name="spot14"
+			 ath="116.208"
+			 atv="-9.544"
+			 linkedscene="scene_nine_elms_test_3final"
+			 type="image"
+			 url="images/team-info.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="js(showTeamPopup( 'blank' ))"
+			 style="normalStyle"
+		 />
+	<!-- Meeting room -->
+	<hotspot name="spot15"
+		 ath="144.099"
+ 		 atv="-2.687"
+		 linkedscene="scene_Meeting_room"
+		 onloaded="tween(alpha, 1, 1)"
+		 type="image"
+	     url="images/team-door.png"
+		 onout="tween(ry, 0, 1, easeInOutQuad);"
+		 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+		 style="normalStyle"
+		 devices="flash"
+		/>
+
+		<!-- TV -->
+		<hotspot name="spot16"
+			 ath="-86.622"
+			 atv="-7.908"
+			 type="image"
+			 url="images/team-play.png"
+			 onloaded="tween(alpha, 1, 1)"
+			 onclick="looktohotspot(name);js(blurEffect());wait(1);openurl(/videos/, _self);wait(15);js(removeBlur())"
+			 onout ="tween(ry, 0, 1, easeInOutQuad)"
+			 style="normalStyle"
+		/>
+
+		<hotspot name="spot13"
+			ath="-146.063"
+			atv="-5.108"
+			type="image"
+			url="images/team-door.png"
+			linkedscene="scene_marketing"
+			style="normalStyle"
+			onloaded="tween(alpha, 1, 1)"
+			onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+		/>
+
+	</scene>
+
+	<scene name="scene_Meeting_room" title="Meeting room" onstart="" thumburl="panos/Meeting_room.tiles/thumb.jpg" lat="51.49231389" lng="-0.12096944" heading="351.1" devices="flash">
+
+		<view  hlookat="-2.901" vlookat="0.170" fovtype="MFOV" fov="64.507" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Meeting_room.tiles/preview.jpg" />
+
+		<image type="SPHERE" hfov="180.00" vfov="42.777778" voffset="0.00" multires="true" tilesize="4000" progressive="true">
+			<level tiledimagewidth="8000" tiledimageheight="1901">
+				<sphere url="panos/Meeting_room.tiles/pano_%v%h.jpg" />
+			</level>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1"
+			 ath="30.998"
+			 atv="-1.739"
+			 linkedscene="scene_nine_elms_test_3final"
+		 	 onloaded="tween(atv, -1.171, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+		 	 type="image"
+		     url="images/team-door.png"
+		 	 onout="tween(ry, 0, 1, easeInOutQuad);"
+		 	 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+		 	 style="normalStyle"
+		/>
+
+		<hotspot name="spot2"
+			 ath="-4.047"
+			 atv="-5.339"
+			 type="image"
+			 url="images/team-play.png"
+			 onloaded="tween(atv,-5.005, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+			 onclick="looktohotspot(name);js(blurEffect());wait(1);openurl(/videos/, _self);wait(15);js(removeBlur())"
+			 onout ="tween(ry, 0, 1, easeInOutQuad)"
+			 style="normalStyle"
+		/>
+
+	</scene>
+
+	<scene name="scene_Outside" title="Outside" onstart="" thumburl="panos/Outside.tiles/thumb.jpg" lat="51.49227500" lng="-0.12126667" heading="19.7" devices="flash">
+
+		<view hlookat="0" vlookat="0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Outside.tiles/preview.jpg" />
+
+		<image type="SPHERE" hfov="180.00" vfov="43.970299" voffset="0.00" multires="true" tilesize="4000" progressive="true">
+			<level tiledimagewidth="8000" tiledimageheight="1954">
+				<sphere url="panos/Outside.tiles/pano_%v%h.jpg" />
+			</level>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="spot1"
+			 ath="-26.2"
+			 atv="-3"
+			 linkedscene="scene_nine_elms_test_3final"
+		 	 onloaded="tween(atv, -3, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+		 	 type="image"
+		     url="images/team-door.png"
+		 	 onout="tween(ry, 0, 1, easeInOutQuad);"
+		 	 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+		 	 style="normalStyle"
+		/>
+	</scene>
+
+	<scene name="scene_marketing" title="marketing" onstart="" thumburl="panos/marketing.tiles/thumb.jpg" lat="" lng="" heading="" devices="flash">
+
+		<view hlookat="5.020" vlookat="-1.379" fovtype="MFOV" fov="77.123" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/marketing.tiles/preview.jpg" />
+
+		<image hfov="120.00" vfov="48.742455" voffset="0.00">
+			<sphere url="panos/marketing.tiles/pano.jpg" />
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<!-- Karry -->
+
+		<!-- 
+		<hotspot name="blank"
+				 ath="13.630"
+				 atv="-4.565"
+				 type="image"
+				 url="images/team-member3.png"
+				 onloaded="tween(alpha, 1, 1)"
+				 onclick="js(showTeamPopup( 'blank' ))"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad)"
+				 style="normalStyle"
+		 		/>
+
+		 -->
+		<hotspot name="spot14"
+		 ath="13.649"
+		 atv="-4.452"
+		 type="image"
+		 url="images/team-member3.png"
+		 onloaded="tween(alpha, 1, 1)"
+		 onclick="js(showTeamPopup( 'spot14' ))"
+ 		 onout ="tween(ry, 0, 1, easeInOutQuad)"
+		 style="normalStyle" 
+		 />
+
+		<!-- Girly -->
+		<hotspot name="spot12"
+		 ath="0.279"
+		 atv="-4.452"
+		 type="image"
+		 url="images/team-member3.png"
+		 onloaded="tween(alpha, 1, 1)"
+		 onclick="js(showTeamPopup( 'spot12' ))"
+ 		 onout ="tween(ry, 0, 1, easeInOutQuad)"
+		 style="normalStyle" 
+		 />
+
+		<!-- Back to office -->
+		<hotspot name="spot3"
+		 ath="-27.636"
+		 atv="-2.962"
+		 linkedscene="scene_nine_elms_test_3final"
+	 	 onloaded="tween(alpha, 1, 1)"
+	 	 type="image"
+	     url="images/team-door.png"
+	 	 onout="tween(ry, 0, 1, easeInOutQuad);"
+	 	 onclick="if(linkedscene, skin_hidetooltips(); tween(oy,-20,0.5); tween(alpha,0,0.5); looktohotspot(); loadscene(get(linkedscene),null,MERGE,BLEND(1)); skin_updatescroll(); );"
+	 	 style="normalStyle"
+		 />
+
+	</scene>
+
+</krpano>

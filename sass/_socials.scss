@@ -1,0 +1,94 @@
+.socials {
+  position: relative;
+  display: inline-block;
+	width: 100%;
+  font-family: $font__title;
+
+	a {
+    display: inline-block !important;
+		width: auto !important;
+    line-height: 1 !important;
+
+    &.share {
+      font-size: 14px !important;
+      color: $color__white;
+    }
+	}
+
+  .leftmenu {
+    display: inline-block;
+    vertical-align: middle;
+
+    li {
+      padding: 0;
+    }
+  }
+
+	ul.icons {
+	  list-style-type: none;
+	  padding: 0;
+	  margin: 0;
+	  display: inline-block;
+	  z-index: 2;
+	  vertical-align: middle;
+	  font-size: 22px;
+
+		li {
+		  display: inline-block !important;
+	  	vertical-align: middle;
+		  opacity: 0;
+		  z-index: 1;
+      padding: 0 5px 0 7px;
+			min-height: 0 !important;
+			width: auto !important;
+			border: none !important;
+		  @include transition(all 0.5s ease !important);
+
+			&:after {
+			  // content: '|';
+			  // padding-left: 7px;
+			  // padding-right: 5px;
+			}
+
+			&:last-child:after {
+  			content: '';
+			}
+
+			a {
+			  z-index: 1;
+			  color: $color__light_brown !important;
+
+				&:hover {
+    			color: $color__brown !important;
+				}
+			}
+
+			@for $i from 1 to 5 {
+				&:nth-child(#{$i}) {
+					  @include transform(translateX( (-30 * $i )px));
+					  @include transition-delay(1200ms - ( 200 * $i) );
+				}
+			}
+		}
+
+
+		&.active {
+			li {
+				opacity: 1;
+				transform: translateX(0);
+
+				@for $i from 1 to 5 {
+					&:nth-child(#{$i}) {
+						@include transition-delay(200ms * $i);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.fa-envelope {
+    position: relative;
+    top: -1px;
+}

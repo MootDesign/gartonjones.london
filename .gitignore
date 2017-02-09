@@ -1,0 +1,22 @@
+# https://git-scm.com/docs/gitignore
+# https://help.github.com/articles/ignoring-files
+# Example .gitignore files: https://github.com/github/gitignore
+/.brackets.json
+sftp-config.json
+.sass-cache
+node_modules
+<<<<<<< HEAD
+Gruntfile.js
+=======
+<<<<<<< HEAD
+style.css # We don't need this, as every time it will be recompiled and uploaded. Saves headache at merging :)
+.DS_Store
+.remote-sync.json
+
+=======
+# Gruntfile.js
+>>>>>>> ca3bb116be68d88514fb8adbbe4507573d86b9d9
+style.css # We don't need this, as every time it will be recompiled and uploaded. Saves headache at merging :)
+.DS_Store
+.remote-sync.json
+>>>>>>> 7b968480eadab95d1f37638fe7739bb012ece9b9

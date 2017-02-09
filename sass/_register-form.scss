@@ -1,0 +1,351 @@
+//#register {
+$border-color: #c0c2c4;
+$font__big: 15px;
+$font__label: 14px;
+$font__input: 14px;
+
+	.gform_wrapper {
+		margin-top: 0;
+	}
+
+	.gfield_html {
+		margin: 0;
+	}
+
+	.gform_confirmation_message {
+		margin: 0;
+	}
+
+	form {
+		width: 100%;
+		height: 100%;
+		padding: 0 20px;
+		font-family: 'Gilda Display';
+//        overflow: hidden;
+
+        // opacity: 0;
+        @include transition(all 0.4s ease);
+        // @include translateY(-30px);
+
+		.gform_heading {
+			margin: 0;
+			padding-top: 10px;
+			line-height: 18px;
+		}
+
+		.description {
+			margin-top: -5px;
+		}
+		.gform_description {
+			text-transform: uppercase;
+			font-size: 13px;
+		}
+
+		.ginput_container {
+			margin: 0;
+		}
+
+		label, span {
+			color: #ab9756;
+			font-size: $font__big;
+			margin: 0;
+		}
+
+		input, textarea {
+			width: 100%;
+			max-width: 240px;
+			display: block;
+			margin: 7px auto;
+			height: 33px;
+			padding-left: 5px;
+			border: 1px solid $border-color;
+		}
+
+		.gfield_radio {
+			input {
+				display: none !important;
+			}
+
+			li {
+				margin-right: 10px !important;
+			}
+
+			label {
+				font-size: $font__label;
+			}
+		}
+
+		input {
+		    font-size: $font__input;
+
+			&[type="radio"] {
+				width: 15px;
+				height: 15px;
+				display: inline-block;
+				vertical-align: middle;
+				margin: 0;
+				margin-left: 2px;
+		        opacity: 0;
+		        pointer-events: none;
+			}
+
+            & + label {
+				cursor: pointer;
+                padding-left: 25px;
+
+                &:before {
+                    border:1px solid $border-color !important;
+                    left: 3px !important;
+                }
+                &:after {
+                    background: $border-color;
+                    left: 6px !important;
+                }
+            }
+		}
+
+		select {
+			width: 128px;
+			height: 28px;
+			background: white;
+			// border: 1px solid $border-color;
+			color: #ab9756;
+			margin-right: 28px;
+		}
+
+		.div-select {
+			display: inline-block;
+			margin-right: 28px;
+			width: 128px;
+			margin-top: 15px;
+		}
+
+		.div-select-2 {
+			margin-right: 0;
+		}
+
+		textarea {
+			height: 70px;
+			font-size: 12px;
+			padding: 10px;
+		}
+
+		input[type="submit"] {
+			background: #818181 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAJCAYAAAACTR1pAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACDSURBVCiRlZCxDcIwFERfHGqXTJBB2CtSOhZhArbICpSpKakdPZoPMiER4aSTrbt7zW/UG3AEMvv0AO4J6IArMO6Axth2jVoiPAMz0APtApijb6MnVWUf7wmYqnyKrN6AWhYe1Kxewjmyj90a+IIJf0FqOWwcYdj4v1Uf5y+l35N1PQELJ4H5a5SMTgAAAABJRU5ErkJggg==) left 20px top 12px no-repeat;
+			color: white;
+			font-size: 14px;
+			height: 35px;
+			padding-top: 8px;
+			padding-bottom: 8px;
+            cursor: pointer;
+            @include transition(all 0.4s ease);
+
+            &:hover {
+                background-color: #686868;
+            }
+		}
+
+		/**
+		 * Name specific form styles
+		 */
+		.name, .phone, .email, .description, .country {
+			label {
+				display: none;
+			}
+		}
+
+
+		.description {
+			padding: 0;
+		}
+
+		.toggle-radio {
+			font-size: 16px;
+			font-weight: bold;
+
+			&:focus, &:active {
+				color: $color__light_brown;
+			}
+
+			&:after {
+				content: '';
+				background: image-url('arrow-down.png') center no-repeat;
+				display: inline-block;
+				vertical-align: middle;
+				width: 17px;
+				height: 10px;
+				margin-left: 10px;
+			}
+
+			&.no-arrow {
+				&:after {
+					opacity: 0;
+				}
+			}
+		}
+
+		.radio-would {
+			li {
+				display: inline-block;
+			}
+
+			input[type="radio"] {
+				display: inline-block;
+				vertical-align: top;
+				margin-top: 0px;
+				margin-left: 0px;
+				margin-right: 2px;
+			}
+
+			label {
+				width: 200px;
+				display: inline-block;
+				margin-top: 0;
+				font-size: 13px;
+				line-height: 1.15;
+
+                &:before {
+//                    left: -18px !important;
+                }
+
+                &:after {
+//                    left: -13px !important;
+                }
+			}
+
+			> label {
+//				font-size: $font__big;
+//				width: 100%;
+				display: none;
+			}
+		}
+
+		.radio-interest {
+			.ginput_container {
+				display: inline-block;
+				vertical-align: middle;
+
+				li {
+					display: inline-block;
+					margin: 0;
+					vertical-align: middle;
+				}
+
+				label {
+					display: inline-block;
+					margin-right: 0;
+					// margin-left: -1px;
+				}
+
+				input {
+					margin-top: 4px;
+				}
+			}
+		}
+
+		.budget, .bedrooms, .select {
+			display: inline-block;
+			margin-top: 10px;
+			width: 100px;
+			overflow: hidden;
+			position: relative;
+			// border-right: 1px solid $border-color;
+			border: none;
+			outline: 1px solid $border-color;
+
+			label {
+				// display: none;
+				position: absolute;
+				background: image-url('arrow-down.png') center no-repeat;
+				width: 11px;
+				height: 10px;
+				right: 5px;
+				top: 8px;
+				z-index: 1;
+			}
+
+			.ginput_container {
+				display: inline-block;
+			}
+
+			select {
+				width: 125px;
+				height: 28px;
+				background: white;
+				// border: 1px solid $border-color;
+				border: none;
+				color: #ab9756;
+				margin: 0;
+				font-size: 14px;
+			}
+		}
+
+		.bedrooms {
+			float: right;
+		}
+
+		.gform_footer {
+			margin: 0;
+			padding: 0;
+		}
+
+		.riverside {
+			> label {
+				display: inline-block;
+				vertical-align: top;
+
+				+ div {
+					display: inline-block;
+					vertical-align: middle;
+				}
+			}
+
+			input[type="checkbox"] {
+				display: none;
+
+				+ label {
+					display: block;
+					width: 16px;
+					height: 16px;
+					margin: 0 0 0 10px;
+					border:1px solid $border-color;
+					position: relative;
+					padding: 0;
+					color: transparent;
+
+					&:before {
+						content: '\2713';
+						color: $border-color;
+						border: none !important;
+						position: absolute;
+						left: 2px !important;
+						top: 0;
+						font-size: 14px;
+						line-height: 16px;
+						opacity: 0;
+						@include scale(0);
+						@include transition(all 0.2s ease);
+					}
+				}
+
+				&:checked + label {
+					&:before {
+						opacity: 1;
+						@include scale(1);
+					}
+				}
+			}
+
+			ul {
+				label {
+					line-height: 32px;
+				}
+			}
+		}
+	} // end of form
+//} // end of #register
+
+
+.gform_wrapper ul.gfield_radio li {
+    overflow: visible !important;
+}

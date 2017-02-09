@@ -1,0 +1,31 @@
+// scale
+@mixin pabsolute( $mLeft, $mTop ) {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: $mLeft;
+	margin-top: $mTop;
+}
+
+
+// Media queries
+@mixin media-size($max-width, $min-width) {
+	$max_unit: if(unitless($max-width), 'em', '');
+	$min_unit: if(unitless($min-width), 'em', '');
+	@if $min-width > 0 {
+		@media only screen and (min-width: $min-width + $max_unit) and (max-width: $max-width + $min_unit) { @content; }
+	}
+	@else {
+		@media only screen and (max-width: $max-width + $max_unit) { @content; }
+	}
+}
+@mixin media-height($max-height, $min-height) {
+	$max_unit: if(unitless($max-height), 'em', '');
+	$min_unit: if(unitless($min-height), 'em', '');
+	@if $min-height > 0 {
+		@media only screen and (min-height: $min-height + $max_unit) and (max-height: $max-height + $min_unit) { @content; }
+	}
+	@else {
+		@media only screen and (max-height: $max-height + $max_unit) { @content; }
+	}
+}

@@ -1,0 +1,151 @@
+<krpano version="1.17.4" title="Virtual Tour" onstart="startup();">
+
+<!--	<include url="skin/vtourskin.xml" />-->
+
+	<!-- set skin settings: bingmaps? gyro? thumbnail controlling? tooltips? -->
+	<skin_settings bingmaps="false"
+	               bingmaps_key=""
+	               bingmaps_zoombuttons="false"
+	               gyro="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               controlbar_offset="20"
+	               />
+
+	<!-- set optional skin logo url -->
+	<layer name="skin_logo" url="" scale="0.25" opened_onclick="openurl('...',_blank);" />
+
+
+	<style name="normalStyle"
+		   distorted = "true"
+		   scale = "0.38"
+		   alpha="0"
+		   />
+	
+	<action name="startup">
+		if(startscene === null, copy(startscene,scene[0].name));
+		loadscene(get(startscene), null, MERGE);
+	</action>
+
+	
+	<scene name="scene_default" title="default" onstart="" thumburl="panos/default.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="19.929" vlookat="0.628" fovtype="MFOV" fov="65.124" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="range" vlookatmin="-30.500" vlookatmax="30.500" />
+
+		<preview url="panos/default.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/default.tiles/pano_%s.jpg" />
+			<mobile>
+				<cube url="panos/default.tiles/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<!-- place your scene hotspots here -->
+		<hotspot name="helen" 
+				 type="image"
+                 url="images/team-member3.png"
+				 ath="0.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+                 onclick="js(showPopup( 'helen' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		
+		<hotspot name="samantha" 
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="5.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 onclick="js(showPopup( 'samantha' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		<hotspot name="fifi" 
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="10.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 onclick="js(showPopup( 'fifi' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		<hotspot name="orinta" 
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="15.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 onclick="js(showPopup( 'orinta' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		<hotspot name="azeem" 
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="20.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 onclick="js(showPopup( 'azeem' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		<hotspot name="dominic" 
+				 type="image"
+				 url="images/team-member3.png"
+				 ath="25.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+				 onclick="js(showPopup( 'dominic' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+				 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+
+		<hotspot name="charlie" 
+				 type="image"
+                 url="images/team-member3.png"
+				 ath="30.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+                 onclick="js(showPopup( 'charlie' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		
+		<hotspot name="chris" 
+				 type="image"
+                 url="images/team-member3.png"
+				 ath="35.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+                 onclick="js(showPopup( 'chris' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+		
+		<hotspot name="julia" 
+				 type="image"
+                 url="images/team-member3.png"
+				 ath="40.000" atv="-20" 
+				 onloaded="tween(atv, 0, 1.5, easeOutBounce); tween(alpha, 1, 1)"
+                 onclick="js(showPopup( 'julia' ))"
+				 onover="tween(ry, 360, 1, easeInOutQuad);"
+         		 onout ="tween(ry, 0, 1, easeInOutQuad);"
+				 style="normalStyle"
+				 />
+	</scene>
+
+
+</krpano>

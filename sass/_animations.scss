@@ -1,0 +1,449 @@
+@import "compass/css3";
+
+body {
+    font-family: $font__title;
+}
+
+/* Fading animation */
+.fade-me {
+	@include transition(all 0.4s ease !important);
+	position: relative;
+	opacity: 0;
+    pointer-events: none;
+
+	/**
+	 * the classes starting with "to" are hidding one
+	 */
+	&.to-top {
+		@include translateY(-30px);
+	}
+
+	&.to-bottom {
+		@include translateY(30px);
+	}
+
+	&.to-left {
+		@include translateX(-60px);
+	}
+
+	&.to-right {
+		@include translateX(60px);
+	}
+
+	&.to-scale {
+		@include scale(0);
+	}
+
+	&.to-screen {
+		@include transition(all 0.2s ease);
+		@include scale(7);
+	}
+
+	&.to-rotate {
+		@include transform(rotateX(-90deg));
+		@include transform-origin(50% 50% -20px);
+		@include transform-style(preserve-3d);
+	}
+
+	&.to-opacity {
+		opacity: 1;
+	}
+
+	&.show {
+		@include transform(translateX(0) translateY(0) scale(1) rotateX(0deg) rotateY(0deg));
+		opacity: 1;
+        pointer-events: auto;
+	}
+}
+
+/**
+ * based on http://lab.hakim.se/scroll-effects/
+ */
+.fly-perspective {
+	-webkit-perspective: 1300px;
+	perspective: 1300px;
+
+	.fly-me {
+		@include transform-style(preserve-3d);
+		@include transform-origin(50%, 50%, -300px);
+		@include transform(rotateX(-180deg));
+		@include transition(opacity 0.4s ease);
+		@include transition(all 0.6s 0.2s ease);
+		opacity: 0;
+
+		&.show {
+			@include animation(fly 0.8s ease forwards);
+			opacity: 1;
+		}
+
+		&.away {
+			@include animation(fly-away 0.8s ease);
+			opacity: 0;
+		}
+	}
+}
+
+@include keyframes( fly ) {
+	0% { }
+	100% {
+		@include transform(rotateX(0deg));
+	}
+}
+
+@include keyframes( fly-away ) {
+	0% {
+		@include transform(rotateX(0deg));
+	}
+	100% {
+	}
+}
+
+/** animation delay classes */
+@for $i from 1 through 9 {
+	.delay-0#{$i} {
+		@include transition-delay(#{.1 * $i}s  !important);
+	}
+}
+@for $i from 10 through 20 {
+	.delay-#{$i} {
+		@include transition-delay(#{.1 * $i}s  !important);
+	}
+}
+
+.delay-005 {
+	@include transition-delay(.05s  !important);
+}
+
+.delay-015 {
+	@include transition-delay(.15s  !important);
+}
+
+.delay-025 {
+	@include transition-delay(.25s  !important);
+}
+
+/**
+ * y360 rotation
+ */
+.y360-parent {
+	@include perspective(1000px);
+
+    @media screen and ( min-width: $size__mobile ) {
+        nav.top-bar .right & {
+            display: inline-block !important;
+        }
+    }
+}
+
+.y360-hover:hover,
+.y360 {
+	@include animation(y360 1.5s linear);
+	@include animation-iteration-count(infinite);
+
+}
+
+@include keyframes( y360 ) {
+ 0% {
+    @include transform( rotateY( 0deg ) );
+ }
+ 100% {
+    @include transform( rotateY( 360deg ) );
+ }
+}
+
+//Reversed
+@include keyframes( y360-reverse ) {
+ 0% {
+    @include transform( rotateY( -360deg ) );
+ }
+ 100% {
+    @include transform( rotateY( 0deg ) );
+ }
+}
+
+/**
+ * y360 rotation
+ */
+.x360-parent {
+	@include perspective(1000px);
+}
+
+.x360-hover:hover,
+.x360 {
+	@include animation(x360 1.5s linear);
+	@include animation-iteration-count(infinite);
+
+}
+
+@include keyframes( x360 ) {
+ 0% {
+    @include transform( rotateX( 0deg ) );
+ }
+ 100% {
+    @include transform( rotateX( 360deg ) );
+ }
+}
+
+/**
+ * z360 rotation
+ */
+.z360-parent {
+	@include perspective(1000px);
+}
+
+.z360-hover:hover,
+.z360 {
+	@include animation(z360 1.5s linear);
+	@include animation-iteration-count(infinite);
+
+}
+
+@include keyframes( z360 ) {
+ 0% {
+    @include transform( rotateZ( 0deg ) );
+ }
+ 100% {
+    @include transform( rotateZ( 360deg ) );
+ }
+}
+
+/**
+ * "+" ( plus ) animation
+ */
+@mixin css-plus($size, $plus_size) {
+//    $size: 26px;
+//    $plus_size: 13px;
+
+    position: relative;
+    left: 30%;
+    overflow: hidden;
+    width: $size;
+    height: $size;
+    display: inline-block;
+    vertical-align: middle;
+    border:1px solid $color__brown;
+    border-radius: 50%;
+    @include transition(all 0.4s ease);
+
+	&:before {
+		content: '';
+		display: block;
+		width: 1px;
+		height: $plus_size;
+		border-left: 1px solid #ac9857;
+		text-align: center;
+		left: ( $size / 2 ) - 1;
+		top: floor( ( $size - $plus_size ) / 2 );
+		position: absolute;
+        @include transition(all 0.4s ease);
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		border-bottom: 1px solid #ac9857;
+		width: $plus_size;
+		height: 1px;
+		left: floor( ( $size - $plus_size ) / 2 );
+		top: ( $size / 2 ) - 1;
+        @include transition(all 0.4s ease);
+	}
+
+	&.close {
+
+		&:before {
+			transform: rotate(90deg);
+			opacity: 0;
+		}
+
+		&:after {
+		  transform: rotate(-180deg);
+		  width: 7px;
+		  left: 2px;
+		}
+	}
+
+    .css-plus-parent:hover &,
+    &:hover {
+        background: $color__light_brown;
+        border-color: $color__white;
+        @include rotate(90deg);
+
+        &:before,
+        &:after {
+            border-color: $color__white;
+        }
+    }
+}
+
+$size: 20px;
+$plus_size: 12px;
+.css-plus {
+    position: relative;
+    padding-left: 14px;
+    overflow: hidden;
+    width: $size;
+    height: $size;
+    display: inline-block;
+    vertical-align: middle;
+    @include transition(all 0.4s ease);
+
+    &:before {
+        content: '';
+        display: block;
+        width: 1px;
+        height: $plus_size;
+        border-left: 2px solid white;
+        text-align: center;
+        left: ( $size / 2 ) - 1;
+        top: floor( ( $size - $plus_size ) / 2 );
+        position: absolute;
+        @include transition(all 0.4s ease);
+
+        .toggle-options & {
+        	border-color: #ac9857;
+        }
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        border-bottom: 2px solid white;
+        width: $plus_size;
+        height: 1px;
+        left: floor( ( $size - $plus_size ) / 2 );
+        top: ( $size / 2 ) - 1;
+        @include transition(all 0.4s ease);
+
+        .toggle-options & {
+        	border-color: #ac9857;
+        }
+    }
+
+    &.close {
+
+        &:before {
+            transform: rotate(90deg);
+            opacity: 0;
+        }
+
+        &:after {
+          transform: rotate(-180deg);
+          width: 7px;
+          left: 2px;
+        }
+    }
+
+    .css-plus-parent:hover &,
+    &:hover {
+
+        &:before,
+        &:after {
+            border-color: white;
+
+            .toggle-options & {
+            	border-color: #ac9857;
+            }
+        }
+    }
+}
+
+
+.css-big-plus {
+	margin-top: 7px;
+
+	&:before {
+		height: 12px;
+		border-left-width: 2px;
+		left: 5px;
+	}
+
+	&:after {
+		width: 12px;
+		border-bottom-width: 2px;
+		top: 7px;
+	}
+}
+
+//Dots
+.dot-background {
+    background: #fff;
+    border-radius: 100%;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    @include transition( all 1.5s ease);
+}
+
+.dot {
+  border: 3px solid $color__brown;
+  background: transparent;
+  border-radius: 60px;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: -9px;
+  left: -10px;
+  z-index: 1;
+  opacity: 0;
+
+    &.pulse {
+        @include animation(pulse 2s linear infinite);
+
+    }
+}
+
+@include keyframes( pulse ) {
+ 0% {
+     @include scale(0);
+    opacity: 0.0;
+ }
+ 25% {
+     @include scale(0.4);
+    opacity: 0;
+ }
+ 50% {
+     @include scale(0.6);
+    opacity: 1;
+ }
+ 75% {
+     @include scale(0.6);
+    opacity: 0.7;
+ }
+ 100% {
+     @include scale(1.1);
+    opacity: 0.0;
+ }
+}
+
+@include keyframes(zoomMe) {
+  0% {
+    @include scale(1);
+  }
+
+  50% {
+    @include scale(1.5);
+  }
+
+  100% {
+    @include scale(1);
+  }
+}
+
+@include keyframes(zoomMeOut) {
+  to {
+    @include scale(1);
+  }
+}
+
+@for $i from 1 through 6 {
+	path:nth-child(#{$i}) {
+		@include animation-delay($i + s);
+	}
+}
+
+@include keyframes(draw) {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
